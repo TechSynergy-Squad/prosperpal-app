@@ -3,22 +3,27 @@ import { Nav } from "./components";
 import { AppRouter, AuthRouter } from "./routes";
 import { AppLayout, AuthLayout } from "./components/layout";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   const isAuthenticated = localStorage.getItem("token");
+  console.log("Token", isAuthenticated);
 
+  const queryClient = new QueryClient();
   return (
-    <Router>
-      <Toaster position="top-center" />
-      {isAuthenticated ? (
-        <>
-          <Nav />
-          <AppLayout children={<AppRouter />} />,
-        </>
-      ) : (
-        <AuthLayout children={<AuthRouter />} />
-      )}
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Toaster position="top-center" />
+        {isAuthenticated ? (
+          <>
+            <Nav />
+            <AppLayout children={<AppRouter />} />,
+          </>
+        ) : (
+          <AuthLayout children={<AuthRouter />} />
+        )}
+      </Router>
+    </QueryClientProvider>
   );
 }
 
