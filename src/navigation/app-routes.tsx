@@ -9,7 +9,6 @@ import {
   LoginPage,
   ProfilePage,
   QRScanner,
-  RegisterPage,
   ReportPage,
 } from "../components";
 import IPTracker from "../components/pages/ip-address";
@@ -31,10 +30,6 @@ export const AppRouter = () => {
           <Route
             path="/scanner"
             element={<AppLayout children={<QRScanner />} />}
-          />
-          <Route
-            path="register"
-            element={<AuthLayout children={<RegisterPage />} />}
           />
           <Route
             path="profile"
