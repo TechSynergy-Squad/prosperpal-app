@@ -36,7 +36,7 @@ export const AppRouter = () => {
             element={<AppLayout children={<FormPage />} />}
           />
           <Route
-            path="report"
+            path="home"
             element={<AppLayout children={<ReportPage />} />}
           />
           <Route
