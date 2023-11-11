@@ -1,7 +1,8 @@
 import { Field, Formik } from "formik";
-import { Button, FormContainer } from "..";
+import { Button } from "..";
 import { userService } from "../../services";
 import { z } from "zod";
+import { FormBodyContainer } from "../form-body-component";
 
 const loginSchema = z.object({
   email: z.string().email(),
@@ -15,17 +16,17 @@ export const LoginForm = () => {
   };
 
   const initialValues = {
-    username: "",
+    email: "",
   };
 
   return (
-    <FormContainer>
+    <FormBodyContainer>
       <Formik
         initialValues={initialValues}
         onSubmit={submit}
         validationSchema={loginSchema}
       >
-        {({ values, errors }) => (
+        {({ errors }) => (
           <form className="text-black flex flex-col items-center justify-center gap-8">
             <Field
               name="email"
@@ -36,7 +37,7 @@ export const LoginForm = () => {
             />
             <Button
               className="loginBtn w-60 text-3xl"
-              onClick={submit}
+              onClick={() => submit}
               shape="rounded"
             >
               Login
@@ -44,6 +45,6 @@ export const LoginForm = () => {
           </form>
         )}
       </Formik>
-    </FormContainer>
+    </FormBodyContainer>
   );
 };

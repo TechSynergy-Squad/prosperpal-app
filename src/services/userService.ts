@@ -1,7 +1,13 @@
-import { LoginValuesProps } from "../components";
+import { z } from "zod";
 import { supabase } from "./supabase";
 
-export async function signInWithEmail(formData: LoginValuesProps) {
+const loginSchema = z.object({
+  email: z.string().email(),
+});
+
+export type LoginFormValues = z.infer<typeof loginSchema>;
+
+export async function signInWithEmail(formData: LoginFormValues) {
   return supabase.auth
     .signInWithOtp({
       email: formData.email,

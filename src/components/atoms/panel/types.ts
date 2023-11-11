@@ -1,4 +1,4 @@
-import { ChildrenProps } from '@project/types';
+import { ChildrenProps } from "../../../types";
 
 export interface PanelProps extends ChildrenProps {
   bgColor?: string;
