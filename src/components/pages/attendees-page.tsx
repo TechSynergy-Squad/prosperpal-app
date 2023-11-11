@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { Attendees, ListItems } from "@project/components";
+import { Attendees } from "../../components";
 
 export const AttendeesPage = () => {
   const attendees: Attendees = {

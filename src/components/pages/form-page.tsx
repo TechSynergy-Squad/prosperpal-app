@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { FiPlus } from "react-icons/fi";
 
 import {
@@ -7,7 +7,7 @@ import {
   Panel,
   ExpandableTable,
   SideForm,
-} from "@project/components";
+} from "../../components";
 import { ProfileService } from "../../services/sub-services/profile-service";
 import { FormPanelProps } from "../molecules/types";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
@@ -53,10 +53,11 @@ export const FormPage = () => {
             <Link to="new">
               <Button
                 className="px-2 py-2 text-xs"
-                variant="outline"
-                icon={<FiPlus />}
-                text="Create New"
-              />
+                shape="rounded"
+                onClick={() => null}
+              >
+                Create New icon={<FiPlus />}
+              </Button>
             </Link>
           </header>
           <form action="">

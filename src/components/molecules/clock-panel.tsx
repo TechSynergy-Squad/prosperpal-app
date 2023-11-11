@@ -1,10 +1,8 @@
-import React from "react";
-
-import { Panel } from "@project/components";
+import { Panel } from "../atoms";
 import { GiTimeSynchronization } from "react-icons/gi";
 import { ClockPanelProps } from "./types";
 
-export const ClockPanel = ({ className, sync, time }: ClockPanelProps) => {
+export const ClockPanel = ({ sync, time }: ClockPanelProps) => {
   const date = new Date();
   const hours = date.getHours();
   const minutes = date.getMinutes();
@@ -13,7 +11,7 @@ export const ClockPanel = ({ className, sync, time }: ClockPanelProps) => {
   }`;
 
   return (
-    <Panel className={className}>
+    <Panel>
       <section className="clock-panel">
         <h1>Clock in time</h1>
         <p className="text-3xl py-3">{time || currentTime}</p>

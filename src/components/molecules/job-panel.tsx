@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Panel } from "@project/components";
+import { Panel } from "../atoms";
 import { JobPanelProps } from "./types";
 
-export const JobPanel = ({ className, jobs }: JobPanelProps) => {
+export const JobPanel = ({ jobs }: JobPanelProps) => {
   return (
-    <Panel className={`${className}`}>
+    <Panel>
       <h1 className="mb-4">Jobs</h1>
       <ul className="list-disc">
         {jobs.map((job, index) => (

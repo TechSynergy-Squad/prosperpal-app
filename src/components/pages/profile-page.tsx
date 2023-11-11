@@ -1,6 +1,6 @@
-import { Outlet, Route, Routes, useNavigate } from "react-router";
+import { Outlet } from "react-router";
 
-import { ProfilePanel } from "@project/components";
+import { ProfilePanel } from "../molecules";
 
 export const ProfilePage = () => {
   return (

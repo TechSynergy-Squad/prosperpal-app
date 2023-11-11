@@ -11,7 +11,6 @@ import {
   QRScanner,
   ReportPage,
 } from "../components";
-import IPTracker from "../components/pages/ip-address";
 
 export const AppRouter = () => {
   return (
@@ -22,10 +21,6 @@ export const AppRouter = () => {
           <Route
             path="login"
             element={<AuthLayout children={<LoginPage />} />}
-          />
-          <Route
-            path="/my-ip"
-            element={<AppLayout children={<IPTracker />} />}
           />
           <Route
             path="/scanner"

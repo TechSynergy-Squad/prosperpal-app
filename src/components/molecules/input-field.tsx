@@ -1,8 +1,7 @@
-import React from "react";
 import { useField } from "formik";
 
 import { InputProps } from "../atoms/types";
-import { ErrorText } from "@project/components";
+import { ErrorText } from "../atoms";
 
 export const InputField = ({ placeholder, color, ...props }: InputProps) => {
   let styles = "";

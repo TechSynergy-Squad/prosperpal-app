@@ -1,10 +1,9 @@
-import React, { useState } from "react";
 import { MdEmail } from "react-icons/md";
 
-import { Panel, Avatar } from "@project/components";
+import { Panel, Avatar } from "../atoms";
 import { UserPanelProps } from "./types";
 
-export const UserPanel = ({ className, userDetails }: UserPanelProps) => {
+export const UserPanel = ({ userDetails }: UserPanelProps) => {
   const userDefault = {
     name: "John Doe",
     job: "Software Engineer",
@@ -14,7 +13,7 @@ export const UserPanel = ({ className, userDetails }: UserPanelProps) => {
   const { name, job, ...rest } = userDetails;
 
   return (
-    <Panel className={className}>
+    <Panel>
       <section className="user-panel px-2 w-[400px] relative ">
         <section className="email absolute   left-4 top-20 ">
           <a

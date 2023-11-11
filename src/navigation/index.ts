@@ -1,2 +1,2 @@
-export * from "./app.router";
+export * from "./app-routes";
 export * from "./auth.router";

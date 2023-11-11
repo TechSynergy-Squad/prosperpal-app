@@ -12,7 +12,7 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import { makeData, Person } from "./utils";
-import { BsChevronDown, BsChevronRight, BsChevronUp } from "react-icons/bs";
+import { BsChevronDown, BsChevronRight } from "react-icons/bs";
 
 export const ExpandableTable = () => {
   const rerender = React.useReducer(() => ({}), {})[1];
@@ -51,10 +51,6 @@ export const ExpandableTable = () => {
             cell: ({ row, getValue }) => (
               <div
                 style={{
-                  // Since rows are flattened by default,
-                  // we can use the row.depth property
-                  // and paddingLeft to visually indicate the depth
-                  // of the row
                   paddingLeft: `${row.depth * 2}rem`,
                 }}
               >

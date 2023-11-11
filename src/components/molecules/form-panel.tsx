@@ -1,6 +1,4 @@
-import React from "react";
-
-import { Panel } from "@project/components";
+import { Panel } from "../";
 import { FormPanelProps } from "./types";
 
 export const FormPanel = ({ name, description }: FormPanelProps) => {

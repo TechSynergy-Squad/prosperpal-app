@@ -1,4 +1,3 @@
-import React from "react";
 import {
   useReactTable,
   createColumnHelper,
@@ -6,10 +5,10 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 
-import { Panel } from "@project/components";
+import { Panel } from "../atoms";
 import { JobPanelProps, JobProps } from "./types";
 
-export const TableJobPanel = ({ className, jobs }: JobPanelProps) => {
+export const TableJobPanel = ({ jobs }: JobPanelProps) => {
   const data = jobs;
   const columnHelper = createColumnHelper<JobProps>();
 
@@ -31,7 +30,7 @@ export const TableJobPanel = ({ className, jobs }: JobPanelProps) => {
   });
 
   return (
-    <Panel className="table-job-panel">
+    <Panel>
       <table className="w-full space-y-3">
         <thead className="border border-transparent border-b-gray-600">
           {table.getHeaderGroups().map((headerGroup) => (

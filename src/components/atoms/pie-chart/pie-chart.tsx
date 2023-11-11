@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import { LegendSymbol } from "../legend-symbol/legend-symbol";
+import { LegendSymbol } from "../legend-symbol";
 import { AssetAllocationsProps, TooltipProps } from "./types";
 
 export const PieChartGraph: FC<AssetAllocationsProps> = ({
