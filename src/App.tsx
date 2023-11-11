@@ -6,8 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
-  const isAuthenticated = localStorage.getItem("token");
-  console.log("Token", isAuthenticated);
+  const isAuthenticated = localStorage.getItem("token") || true;
 
   const queryClient = new QueryClient();
   return (
