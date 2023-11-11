@@ -10,6 +10,7 @@ import {
   ProfilePage,
   QRScanner,
   ReportPage,
+  GoalsListGraph
 } from "../components";
 
 export const AppRouter = () => {
@@ -21,6 +22,10 @@ export const AppRouter = () => {
           <Route
             path="login"
             element={<AuthLayout children={<LoginPage />} />}
+          />
+          <Route
+            path="/goals"
+            element={<AuthLayout children={<GoalsListGraph />} />}
           />
           <Route
             path="/scanner"
