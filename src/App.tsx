@@ -3,6 +3,7 @@ import { Nav } from "./components";
 import { AppRouter, AuthRouter } from "./routes";
 import { AppLayout, AuthLayout } from "./components/layout";
 import { Toaster } from "react-hot-toast";
+import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
