@@ -39,6 +39,7 @@ export const Nav = () => {
         <section className="flex justify-between gap-6">
           {navLinks.map((link) => (
             <NavLink
+              key={link.name}
               to={link.path}
               className={`${link.name
                 .replace(" ", "")

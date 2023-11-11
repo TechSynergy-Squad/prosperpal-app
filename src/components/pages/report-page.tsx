@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 
 import { ProfileService } from "../../services/sub-services/profile-service";
 import { UserProps } from "../molecules/types";
-import { GoalPanel, JobPanel, TableJobPanel, UserPanel } from "../molecules";
+import { GoalPanel } from "../molecules";
 import { Panel } from "..";
 import { BanksDropDown, Graph } from "../atoms";
 import { Switch } from "@headlessui/react";
+import { useGetTransactionsQuery } from "../../queries";
 
 export const ReportPage = () => {
   const [userDetails, setUserDetails] = useState<UserProps>({
@@ -14,6 +15,9 @@ export const ReportPage = () => {
     email: "",
     profile: "",
   });
+
+  const { data } = useGetTransactionsQuery();
+  console.log(data);
 
   const [selectedBank, setSelectedBank] = useState("African Bank");
 

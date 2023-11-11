@@ -1,7 +1,6 @@
 import axios from "axios";
-import { TokenActions } from "./sub-services/user-service";
 
-export const baseURL = "https://gradserver.onrender.com";
+export const baseURL = "http://localhost:5001/api";
 
 export const openAPI = axios.create({
   baseURL: baseURL,
@@ -9,7 +8,7 @@ export const openAPI = axios.create({
 
 export const closedAPI = axios.create({
   baseURL: baseURL,
-  headers: {
+  /*   headers: {
     Authorization: "Bearer " + TokenActions.get(),
-  },
+  }, */
 });
