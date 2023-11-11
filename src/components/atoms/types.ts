@@ -45,8 +45,14 @@ export type AuthPanelProps = {
 };
 
 export type ListGraphInputProps = {
-  date: string;
+  startDate : string;
+  endDate: string;
   title: string;
   description: string;
+  model: string;
+  yearOfManufacture: string;
+  maintenance: string;
+  insurance: string;
+  repairs: string;
 }
 
