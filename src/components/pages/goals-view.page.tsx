@@ -5,10 +5,10 @@ import { ListGraph } from '../atoms/index';
 import { ListGraphInputProps } from '../atoms/types';
 
 export function GoalsListGraph(): JSX.Element {
-    const listGraphInput: ListGraphInputProps[] = [{ date: '2021-01-01', title: 'title', description: 'description' }, 
-                                                   { date: '2021-01-01', title: 'title1', description: 'description1' }, 
-                                                  { date: '2021-01-01', title: 'title2', description: 'description2' },
-                                                  { date: '2021-01-01', title: 'title3', description: 'description3' },
-                                                  { date: '2021-01-01', title: 'title4', description: 'description4' }];
+    const listGraphInput: ListGraphInputProps[] = [{  title: 'title', description: 'description',startDate: '2021-01-01',endDate: '2021-01-01',model: 'model',yearOfManufacture: 'yearOfManufacture',maintenance: 'maintenance',insurance: 'insurance',repairs: 'repairs' }, 
+                                                   {  title: 'title1', description: 'description1' ,startDate: '2021-01-01',endDate: '2021-01-01',model: 'model',yearOfManufacture: 'yearOfManufacture',maintenance: 'maintenance',insurance: 'insurance',repairs: 'repairs' },
+                                                  {  title: 'title2', description: 'description2' ,startDate: '2021-01-01',endDate: '2021-01-01',model: 'model',yearOfManufacture: 'yearOfManufacture',maintenance: 'maintenance',insurance: 'insurance',repairs: 'repairs' },
+                                                  {  title: 'title3', description: 'description3' ,startDate: '2021-01-01',endDate: '2021-01-01',model: 'model',yearOfManufacture: 'yearOfManufacture',maintenance: 'maintenance',insurance: 'insurance',repairs: 'repairs'},
+                                                  { title: 'title4', description: 'description4' ,startDate: '2021-01-01',endDate: '2021-01-01',model: 'model',yearOfManufacture: 'yearOfManufacture',maintenance: 'maintenance',insurance: 'insurance',repairs: 'repairs'}];
     return <ListGraph inputs={listGraphInput} />;
 }
