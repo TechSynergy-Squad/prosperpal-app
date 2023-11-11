@@ -11,3 +11,4 @@ export * from "./qr-generator";
 export * from "./nav";
 export * from "./pie-chart";
 export * from "./qr-generator";
+export * from "./form-body-component";

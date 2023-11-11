@@ -2,7 +2,7 @@ import { Field, Formik } from "formik";
 import { Button } from "..";
 import { userService } from "../../services";
 import { z } from "zod";
-import { FormBodyContainer } from "../form-body-component";
+import { FormBodyContainer } from "../atoms/form-body-component";
 
 const loginSchema = z.object({
   email: z.string().email(),
