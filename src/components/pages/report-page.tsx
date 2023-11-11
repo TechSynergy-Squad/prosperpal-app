@@ -51,7 +51,7 @@ export const ReportPage = () => {
   return (
     <>
       <section className="view-type flex justify-between gap-6 py-2">
-        <BanksDropDown />
+        <BanksDropDown setBank={setSelectedBank} />
         <section className="flex gap-2">
           <p className="text-primary">Connect Bank</p>
           <Switch
@@ -74,8 +74,7 @@ export const ReportPage = () => {
           <GoalPanel
             connected={false}
             percentage={50}
-            time={clockDetails.time}
-            bank={"African Bank"}
+            bank={selectedBank}
             className="pl-7"
           />
         </section>
@@ -83,8 +82,7 @@ export const ReportPage = () => {
           <GoalPanel
             connected={isConnected}
             percentage={100}
-            time={clockDetails.time}
-            bank={"African Bank"}
+            bank={selectedBank}
             className="pl-7"
           />
         </section>
@@ -92,7 +90,6 @@ export const ReportPage = () => {
           <GoalPanel
             connected={false}
             percentage={50}
-            time={clockDetails.time}
             bank={"African Bank"}
             className="pl-7"
           />

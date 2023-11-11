@@ -28,7 +28,6 @@ export type GoalPanelProps = {
   className?: string;
   percentage: number;
   connected: boolean;
-  time: string;
 };
 
 export type JobProps = {

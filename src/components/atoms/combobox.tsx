@@ -1,5 +1,5 @@
 import { Combobox } from "@headlessui/react";
-import { useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { AiOutlineCheckCircle as CheckIcon } from "react-icons/ai";
 
 const banks = [
@@ -13,7 +13,11 @@ const banks = [
   { id: 8, name: "Access Bank" },
 ];
 
-export function BanksDropDown() {
+export function BanksDropDown({
+  setBank,
+}: {
+  setBank: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const [selectedBank, setSelectedBank] = useState(banks[0]);
   const [query, setQuery] = useState("");
 
@@ -24,9 +28,14 @@ export function BanksDropDown() {
           return bank.name.toLowerCase().includes(query.toLowerCase());
         });
 
+  const onSelection = (bank: (typeof banks)[0]) => {
+    setBank(bank?.name);
+    setSelectedBank(bank);
+  };
+
   return (
     <div className="w-72">
-      <Combobox value={selectedBank} onChange={setSelectedBank}>
+      <Combobox value={selectedBank} onChange={onSelection}>
         <Combobox.Input
           className={
             "border-none bg-primary text-white w-60 rounded-lg px-4 py-2 z-50"
