@@ -29,6 +29,7 @@ export const LoginForm = () => {
         {({ errors }) => (
           <form className="text-black flex flex-col items-center justify-center gap-8">
             <Field
+              className="bg-[#E9E4E4]"
               name="email"
               color="text-black"
               placeholder="Email"

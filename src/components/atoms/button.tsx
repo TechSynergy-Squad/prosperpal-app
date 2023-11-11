@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   switch (shape) {
     case "rounded":
-      shapeClasses = "rounded-full";
+      shapeClasses = "rounded-full bg-[#1F294D] text-white";
       break;
     case "square":
       shapeClasses = "rounded-none";
@@ -31,11 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
   }
 
   return (
-    <button
-      type={type}
-      className={`p-2 bg-blue-500 text-white ${shapeClasses}`}
-      onClick={onClick}
-    >
+    <button type={type} className={`${shapeClasses}`} onClick={onClick}>
       {children}
     </button>
   );

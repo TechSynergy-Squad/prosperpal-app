@@ -32,7 +32,9 @@ export const SideForm = ({ isOpen, onClose }: SideFormProps) => {
               color="white"
             />
 
-            <Button className="self-center w-56" text="Add" onClick={onClose} />
+            <Button className="self-center w-56" onClick={onClose}>
+              Add
+            </Button>
           </form>
         )}
       </Formik>

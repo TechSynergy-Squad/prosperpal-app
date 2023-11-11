@@ -6,7 +6,7 @@ export const AuthLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Breadcrumb />
-      <section className="w-screen h-screen flex justify-center items-center">
+      <section className="w-screen h-screen flex justify-center items-center bg-app-">
         {children}
       </section>
     </>
