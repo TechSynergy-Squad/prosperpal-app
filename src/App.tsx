@@ -5,8 +5,7 @@ import { AppLayout, AuthLayout } from "./components/layout";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const isAuthenticated = localStorage.getItem("token");
-  console.log(isAuthenticated);
+  const isAuthenticated = localStorage.getItem("token") || true;
 
   return (
     <Router>
