@@ -1,7 +1,5 @@
-import React from "react";
-
 import { ChildrenProps } from "../../common/types";
-import { Breadcrumb, Nav } from "@project/components";
+import { Breadcrumb, Nav } from "../atoms";
 
 export const AppLayout = ({ children }: ChildrenProps) => {
   return (
