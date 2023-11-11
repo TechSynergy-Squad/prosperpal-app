@@ -35,7 +35,7 @@ export const LoginForm = () => {
       onSubmit={submit}
       validationSchema={loginSchema}
     >
-      {({ errors }) => (
+      {({ values, errors }) => (
         <form className="text-black flex flex-col items-center justify-center gap-8">
           <Field
             className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
@@ -47,7 +47,11 @@ export const LoginForm = () => {
           />
           <Button
             className="loginBtn w-80 text-3xl"
-            onClick={() => submit}
+            onClick={(e) => {
+              e.preventDefault();
+              toast.loading("Check email...");
+              submit(values);
+            }}
             shape="rounded"
           >
             Login
