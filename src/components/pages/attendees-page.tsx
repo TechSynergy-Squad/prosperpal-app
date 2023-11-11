@@ -1,4 +1,4 @@
-import { Attendees } from "../../components";
+import { Attendees, ListItems } from "../../components";
 
 export const AttendeesPage = () => {
   const attendees: Attendees = {
@@ -45,7 +45,7 @@ export const AttendeesPage = () => {
   return (
     <section className="text-white">
       <h1 className="text-3xl font-bold">Attendees</h1>
-      {/*  <ListItems attendees={attendees} /> */}
+      {/* <ListItems attendees={attendees} /> */}
     </section>
   );
 };
