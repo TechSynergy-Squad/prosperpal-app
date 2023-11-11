@@ -7,9 +7,10 @@ import { z } from "zod";
 const loginSchema = z.object({
   email: z.string().email(),
 });
-export const LoginForm = () => {
-  const navigate = useNavigate();
 
+export type LoginFormValues = z.infer<typeof loginSchema>;
+
+export const LoginForm = () => {
   const submit = async ({ email }: { email: string }) => {
     userService.signInWithEmail({ email });
   };

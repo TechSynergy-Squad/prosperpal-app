@@ -1,22 +1,8 @@
-import React, { ReactNode } from "react";
-
-type Shape =
-  | "rounded"
-  | "square"
-  | "none"
-  | "outline-rounded"
-  | "outline-square";
-
-interface ButtonProps {
-  type?: "button" | "submit" | "reset";
-  shape: Shape;
-  onClick: () => void;
-  isLoading?: boolean;
-  children: ReactNode;
-}
+import React from "react";
+import { ButtonProps } from "../../types";
 
 export const Button: React.FC<ButtonProps> = ({
-  shape,
+  shape = "rounded",
   children,
   onClick,
   type = "submit",

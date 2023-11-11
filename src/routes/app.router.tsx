@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { Home, About, Contact } from "../components";
 
 const appRoutes = [
-  <Route path="/" element={<Home />} />,
+  <Route path="/home" element={<Home />} />,
   <Route path="/contact" element={<Contact />} />,
   <Route path="/about" element={<About />} />,
 ];

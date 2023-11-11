@@ -1,26 +1,22 @@
-import toast from "react-hot-toast";
+import { LoginValuesProps } from "../components";
 import { supabase } from "./supabase";
 
-export async function signInWithEmail({ email }: { email: string }) {
-  const { data, error } = await supabase.auth.signInWithOtp({
-    email: email,
-    options: {
-      shouldCreateUser: true,
-      emailRedirectTo: "http://localhost:5173",
-    },
-  });
-  error
-    ? toast.error(error.message)
-    : toast.success("Email sent, please check your inbox");
-  if (data?.user) localStorage.setItem("token", data?.user ?? "");
+export async function signInWithEmail(formData: LoginValuesProps) {
+  return supabase.auth
+    .signInWithOtp({
+      email: formData.email,
+      options: {
+        shouldCreateUser: true,
+        emailRedirectTo: "http://localhost:5173/home",
+      },
+    })
+    .then((res) => {
+      console.log(res);
+    });
 }
 
-export async function signOut() {
-  const { error } = await supabase.auth.signOut();
-
-  if (error) {
-    toast.error("Failed to sign out");
-  }
+export function signOut() {
+  return supabase.auth.signOut();
 }
 
 export default {
