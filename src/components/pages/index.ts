@@ -11,3 +11,4 @@ export * from "./profile-page";
 export * from "./ip-address";
 export * from "./qr-scanner";
 export * from "./attendees-page";
+export * from "./goals-view.page"

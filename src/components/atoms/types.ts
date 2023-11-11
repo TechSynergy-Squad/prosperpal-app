@@ -43,3 +43,10 @@ export type AuthPanelProps = {
   children: ReactNode;
   className?: string;
 };
+
+export type ListGraphInputProps = {
+  date: string;
+  title: string;
+  description: string;
+}
+
