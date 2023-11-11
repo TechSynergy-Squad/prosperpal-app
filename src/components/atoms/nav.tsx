@@ -16,8 +16,8 @@ export const Nav = () => {
       path: "/form",
     },
     {
-      name: "My IP",
-      path: "/my-ip",
+      name: "Goals",
+      path: "/goals",
     },
     {
       name: "Events",

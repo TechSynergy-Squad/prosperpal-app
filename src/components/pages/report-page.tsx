@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 
 import { ProfileService } from "../../services/sub-services/profile-service";
 import { UserProps } from "../molecules/types";
-import { ClockPanel, JobPanel, TableJobPanel, UserPanel } from "../molecules";
+import { GoalPanel, JobPanel, TableJobPanel, UserPanel } from "../molecules";
 import { Panel } from "..";
-import { Graph } from "../atoms";
+import { BanksDropDown, Graph } from "../atoms";
 import { Switch } from "@headlessui/react";
 
 export const ReportPage = () => {
@@ -14,6 +14,8 @@ export const ReportPage = () => {
     email: "",
     profile: "",
   });
+
+  const [selectedBank, setSelectedBank] = useState("African Bank");
 
   //const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
   const [isHidden] = useState(true);
@@ -48,41 +50,50 @@ export const ReportPage = () => {
 
   return (
     <>
-      <section className="view-type flex justify-end gap-6">
-        <p className="text-primary">Connect Bank</p>
-        <Switch
-          checked={isConnected}
-          onChange={() => setIsConnected(!isConnected)}
-          className={`${
-            isConnected ? "bg-green-600" : "bg-gray-500"
-          } relative inline-flex h-6 w-11 items-center rounded-full`}
-        >
-          <span
+      <section className="view-type flex justify-between gap-6 py-2">
+        <BanksDropDown />
+        <section className="flex gap-2">
+          <p className="text-primary">Connect Bank</p>
+          <Switch
+            checked={isConnected}
+            onChange={() => setIsConnected(!isConnected)}
             className={`${
-              isConnected ? "translate-x-6" : "translate-x-1"
-            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-          />
-        </Switch>
+              isConnected ? "bg-green-600" : "bg-gray-500"
+            } relative inline-flex h-6 w-11 items-center rounded-full`}
+          >
+            <span
+              className={`${
+                isConnected ? "translate-x-6" : "translate-x-1"
+              } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+            />
+          </Switch>
+        </section>
       </section>
       <section className="report-page grid grid-cols-5 gap-6  ">
         <section className="col-span-2">
-          <ClockPanel
+          <GoalPanel
+            connected={false}
+            percentage={50}
             time={clockDetails.time}
-            sync={clockDetails.sync}
+            bank={"African Bank"}
             className="pl-7"
           />
         </section>
         <section className="">
-          <ClockPanel
+          <GoalPanel
+            connected={isConnected}
+            percentage={100}
             time={clockDetails.time}
-            sync={clockDetails.sync}
+            bank={"African Bank"}
             className="pl-7"
           />
         </section>
         <section className="col-span-2">
-          <ClockPanel
+          <GoalPanel
+            connected={false}
+            percentage={50}
             time={clockDetails.time}
-            sync={clockDetails.sync}
+            bank={"African Bank"}
             className="pl-7"
           />
         </section>

@@ -1,4 +1,4 @@
-export * from "./clock-panel";
+export * from "./goal-panel";
 export * from "./expandable-table";
 export * from "./form-panel";
 export * from "./user-panel";

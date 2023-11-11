@@ -14,4 +14,5 @@ export * from "./pie-chart";
 export * from "./qr-generator";
 export * from "./form-body-component";
 export * from "./form-containers";
-export * from "./list-graph"
+export * from "./list-graph";
+export * from "./combobox";

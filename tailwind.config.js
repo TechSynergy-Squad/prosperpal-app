@@ -8,7 +8,7 @@ module.exports = {
       }),
       colors: {
         primary: "#1F294D",
-        secondary: "#77CBBF",
+        secondary: "#5A71EE",
         drawer: "#3490dc",
         toggleText: "#1D7E92",
       },
