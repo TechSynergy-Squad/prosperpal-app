@@ -13,7 +13,7 @@ export async function signInWithEmail(formData: LoginFormValues) {
       email: formData.email,
       options: {
         shouldCreateUser: true,
-        emailRedirectTo: "http://localhost:5173/home",
+        emailRedirectTo: "http://localhost:3000/home",
       },
     })
     .then((res) => {
