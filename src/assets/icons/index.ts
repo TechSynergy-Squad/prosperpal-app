@@ -1,1 +1,1 @@
-export * from "./react.svg";
+export { default as Logo } from "./logo.png";

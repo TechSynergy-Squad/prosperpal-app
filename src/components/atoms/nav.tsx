@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Logo } from "../../assets";
 
 export const Nav = () => {
   const navLinks = [
@@ -32,9 +33,9 @@ export const Nav = () => {
     },
   ];
   return (
-    <nav className="w-full sticky bg-[#191a1f] text-blue-500 drop-shadow-2xl">
+    <nav className="w-full sticky bg-transparent drop-shadow-2xl">
       <ul className="flex justify-between items-center p-3">
-        <h2 className="text-2xl font-bold">React Workshop</h2>
+        <img src={Logo} alt="logo" className="w-12" />
         <section className="flex justify-between gap-6">
           {navLinks.map((link) => (
             <NavLink

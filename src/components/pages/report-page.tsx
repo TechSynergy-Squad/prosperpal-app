@@ -24,7 +24,7 @@ export const ReportPage = () => {
   });
   const [jobs, setJobs] = useState([]);
 
-  const [isList, setIsList] = useState(true);
+  const [isConnected, setIsConnected] = useState(false);
 
   const getReports = async () => {
     return await ProfileService.report();
@@ -48,40 +48,43 @@ export const ReportPage = () => {
 
   return (
     <>
-      <section className="report-page grid grid-cols-2 gap-6  ">
-        <UserPanel className="flex justify-center" userDetails={userDetails} />
-        <section className="grid-rows">
+      <section className="view-type flex justify-end gap-6">
+        <p className="text-primary">Connect Bank</p>
+        <Switch
+          checked={isConnected}
+          onChange={() => setIsConnected(!isConnected)}
+          className={`${
+            isConnected ? "bg-green-600" : "bg-gray-500"
+          } relative inline-flex h-6 w-11 items-center rounded-full`}
+        >
+          <span
+            className={`${
+              isConnected ? "translate-x-6" : "translate-x-1"
+            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+          />
+        </Switch>
+      </section>
+      <section className="report-page grid grid-cols-5 gap-6  ">
+        <section className="col-span-2">
           <ClockPanel
             time={clockDetails.time}
             sync={clockDetails.sync}
             className="pl-7"
           />
-          {isHidden && (
-            <section className="table-view">
-              <section className="view-type flex gap-6">
-                <p className="text-white">List View</p>
-                <Switch
-                  checked={isList}
-                  onChange={() => setIsList(!isList)}
-                  className={`${
-                    isList ? "bg-blue-600" : "bg-gray-200"
-                  } relative inline-flex h-6 w-11 items-center rounded-full`}
-                >
-                  <span
-                    className={`${
-                      isList ? "translate-x-6" : "translate-x-1"
-                    } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-                  />
-                </Switch>
-              </section>
-
-              {isList ? (
-                <JobPanel jobs={jobs} className="pl-9" />
-              ) : (
-                <TableJobPanel jobs={jobs} />
-              )}
-            </section>
-          )}
+        </section>
+        <section className="">
+          <ClockPanel
+            time={clockDetails.time}
+            sync={clockDetails.sync}
+            className="pl-7"
+          />
+        </section>
+        <section className="col-span-2">
+          <ClockPanel
+            time={clockDetails.time}
+            sync={clockDetails.sync}
+            className="pl-7"
+          />
         </section>
       </section>
       <div className="pt-6">
