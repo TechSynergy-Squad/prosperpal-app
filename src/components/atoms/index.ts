@@ -6,6 +6,7 @@ export * from "./header";
 export * from "./list-items";
 export * from "./error-text";
 export * from "./avatar";
+export * from "./table";
 export * from "./panel";
 export * from "./graph";
 export * from "./qr-generator";

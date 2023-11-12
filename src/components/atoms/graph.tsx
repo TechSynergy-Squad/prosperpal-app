@@ -12,28 +12,34 @@ import {
 export const Graph = () => {
   const data = [
     {
-      name: "Martha",
-      completed: 5,
-      doing: 2,
-      backlog: 10,
+      name: "Jan 2023",
+      startBalance: 45600,
+      endBalance: 0,
+      investments: 0,
     },
     {
-      name: "Mary",
-      completed: 1,
-      doing: 3,
-      backlog: 4,
+      name: "Feb 2023",
+      startBalance: 50000,
+      endBalance: 0,
+      investments: 0,
     },
     {
-      name: "Elizabeth",
-      completed: 3,
-      doing: 1,
-      backlog: 16,
+      name: "Mar 2023",
+      startBalance: 45600,
+      endBalance: 1280,
+      investments: 0,
+    },
+    {
+      name: "Apr 2023",
+      startBalance: 45600,
+      endBalance: 18954,
+      investments: 1000,
     },
   ];
 
   const average = () => {
     const total = data
-      .map(({ completed }) => completed)
+      .map(({ startBalance }) => startBalance)
       .reduce((acc: number, curr: number) => {
         return acc + curr;
       }, 0);
@@ -44,16 +50,12 @@ export const Graph = () => {
     <section className="flex flex-col">
       <div className="legend flex gap-4 justify-end text-sm">
         <div className="flex gap-2 items-center text-gray-300">
-          <div className="color bg-orange-500 h-3 w-3 rounded-sm" />
-          <p>Doing</p>
-        </div>
-        <div className="flex gap-2 items-center text-gray-300">
           <div className="color bg-purple-500 h-3 w-3 rounded-sm" />
-          <p>Completed</p>
-        </div>
-        <div className="flex gap-2 items-center text-gray-300">
-          <div className="color bg-yellow-500 h-3 w-3 rounded-sm" />
-          <p>Backlog</p>
+          <p>End of Month</p>
+          <div className="color bg-[#8884d8] h-3 w-3 rounded-sm" />
+          <p>Investments</p>
+          <div className="color bg-[#82ca9d] h-3 w-3 rounded-sm" />
+          <p>Start of Month</p>
         </div>
       </div>
       <div className="chart">
@@ -66,11 +68,11 @@ export const Graph = () => {
           >
             <Line
               type="monotone"
-              dataKey="completed"
+              dataKey="endBalance"
               stroke="rgb(168 85 247)"
             />
-            <Line type="monotone" dataKey="doing" stroke="rgb(249 115 22)" />
-            <Line type="monotone" dataKey="backlog" stroke="rgb(234 179 8)" />
+            <Line type="monotone" dataKey="investments" stroke="#82ca9d" />
+            <Line type="monotone" dataKey="startBalance" stroke="#8884d8" />
             <YAxis tickLine={false} axisLine={false} />
             <XAxis
               dataKey="name"
