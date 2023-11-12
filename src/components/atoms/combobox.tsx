@@ -1,5 +1,5 @@
 import { Combobox } from "@headlessui/react";
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { AiOutlineCheckCircle as CheckIcon } from "react-icons/ai";
 import { LuChevronsUpDown } from "react-icons/lu";
 
@@ -12,6 +12,7 @@ const banks = [
   { id: 6, name: "Absa" },
   { id: 7, name: "First National Bank" },
   { id: 8, name: "Access Bank" },
+  { id: 9, name: "TymeBank" },
 ];
 
 export function BanksDropDown({
@@ -19,7 +20,7 @@ export function BanksDropDown({
 }: {
   setBank: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const [selectedBank, setSelectedBank] = useState(banks[0]);
+  const [selectedBank, setSelectedBank] = useState<(typeof banks)[0]>();
   const [query, setQuery] = useState("");
 
   const filteredBanks =
@@ -39,6 +40,7 @@ export function BanksDropDown({
       <Combobox value={selectedBank} onChange={onSelection}>
         <div className="relative w-full overflow-hidden rounded-lg  text-left shadow-md focus:outline-none focus-visible:ring-1 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
           <Combobox.Input
+            placeholder="Select Bank"
             className={"px-4 py-2 w-full "}
             onChange={(event) => setQuery(event.target.value)}
             displayValue={(bank: (typeof banks)[0]) => bank?.name}

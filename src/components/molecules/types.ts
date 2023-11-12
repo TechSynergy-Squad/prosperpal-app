@@ -32,7 +32,9 @@ export type GoalPanelProps = {
 
 export type JobProps = {
   name: string;
-  clock: string;
+  goal: number;
+  amount: number;
+  id?: number;
 };
 
 export type JobPanelProps = {
