@@ -32,7 +32,7 @@ export function GoalsListGraph(): JSX.Element {
     console.log("what happening");
     
        var promtString =model + " " + description + " from " + yearOfManufacture;
-       setListGraphInput([...listGraphInput, { title: 'Buy a car', description: 'BMW 2 Series Gran Coupe 2022',cost:"R623,400", startDate: '2023-11-12', endDate: '2024-11-11', model: 'BMW', yearOfManufacture: '2021', maintenance: 'R5000', insurance: 'R3000', repairs: 'R5000' }])
+       setListGraphInput([...listGraphInput, { title: 'Buy a car', description: 'BMW 2 Series Gran Coupe 2022',cost:"R623,400", startDate: '2023-11-12', endDate: '2024-11-11', model: 'BMW', yearOfManufacture: '2021', maintenance: 'R5500', insurance: 'R3310', repairs: 'R5000' }])
        console.log("test submit prompt",promtString)
        // userService.signInWithEmail({ email }).then((res) => {
        //   if (Boolean(res)) {
