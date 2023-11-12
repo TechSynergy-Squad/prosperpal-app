@@ -3,7 +3,6 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import { LegendSymbol } from "../legend-symbol";
 import { PieChartProps, TooltipProps } from "./types";
-import { Panel } from "..";
 
 export const PieChartGraph: FC<PieChartProps> = ({ colors, transactions }) => {
   const fills = colors;
