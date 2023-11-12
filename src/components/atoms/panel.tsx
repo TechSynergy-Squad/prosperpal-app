@@ -13,4 +13,5 @@ export const Panel: FC<PanelProps> = ({ children, bgColor = "bg-white" }) => {
       {children}
     </div>
   );
+  s;
 };

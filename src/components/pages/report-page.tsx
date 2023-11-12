@@ -1,90 +1,88 @@
-import { useEffect, useState } from "react";
-
-import { ProfileService } from "../../services/sub-services/profile-service";
-import { UserProps } from "../molecules/types";
-import { ClockPanel, JobPanel, TableJobPanel, UserPanel } from "../molecules";
+import { useState } from "react";
+import { GoalPanel } from "../molecules";
 import { Panel } from "..";
-import { Graph } from "../atoms";
+import { BanksDropDown, Graph, Header, PieChartGraph } from "../atoms";
 import { Switch } from "@headlessui/react";
+import { useGetTransactionsQuery } from "../../queries";
 
 export const ReportPage = () => {
-  const [userDetails, setUserDetails] = useState<UserProps>({
-    name: "",
-    job: "",
-    email: "",
-    profile: "",
-  });
+  const { data } = useGetTransactionsQuery();
+  console.log("Get Transactions", data);
 
-  //const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
-  const [isHidden] = useState(true);
-
-  const [clockDetails, setClockDetails] = useState({
-    time: "",
-    sync: false,
-  });
-  const [jobs, setJobs] = useState([]);
-
+  const [selectedBank, setSelectedBank] = useState("Select Bank");
   const [isConnected, setIsConnected] = useState(false);
-
-  const getReports = async () => {
-    return await ProfileService.report();
-  };
-
-  useEffect(() => {
-    getReports().then((report) => {
-      const { userDetails, clockDetails, jobs } = report;
-      setUserDetails(userDetails);
-      setClockDetails(clockDetails);
-      setJobs(jobs);
-    });
-  }, []);
-  /* type Props = {
-    x: number;
-    y: number;
-    payload: {
-      value: string;
-    };
-  }; */
 
   return (
     <>
-      <section className="view-type flex justify-end gap-6">
-        <p className="text-primary">Connect Bank</p>
-        <Switch
-          checked={isConnected}
-          onChange={() => setIsConnected(!isConnected)}
-          className={`${
-            isConnected ? "bg-green-600" : "bg-gray-500"
-          } relative inline-flex h-6 w-11 items-center rounded-full`}
-        >
-          <span
+      <div className="relative z-50">
+        <div className="inset-0 absolute">
+          <BanksDropDown setBank={setSelectedBank} />
+        </div>
+      </div>
+      <section className="view-type flex justify-end gap-6 py-4">
+        <section className="flex gap-2">
+          <p className="text-primary">Connect Bank</p>
+          <Switch
+            checked={isConnected}
+            onChange={() => setIsConnected(!isConnected)}
             className={`${
-              isConnected ? "translate-x-6" : "translate-x-1"
-            } inline-block h-4 w-4 transform rounded-full bg-white transition`}
-          />
-        </Switch>
+              isConnected ? "bg-green-600" : "bg-gray-500"
+            } relative inline-flex h-6 w-11 items-center rounded-full`}
+          >
+            <span
+              className={`${
+                isConnected ? "translate-x-6" : "translate-x-1"
+              } inline-block h-4 w-4 transform rounded-full bg-white transition`}
+            />
+          </Switch>
+        </section>
       </section>
       <section className="report-page grid grid-cols-5 gap-6  ">
         <section className="col-span-2">
-          <ClockPanel
-            time={clockDetails.time}
-            sync={clockDetails.sync}
+          <GoalPanel
+            connected={false}
+            percentage={50}
+            bank={selectedBank}
             className="pl-7"
           />
         </section>
         <section className="">
-          <ClockPanel
-            time={clockDetails.time}
-            sync={clockDetails.sync}
+          <GoalPanel
+            connected={isConnected}
+            percentage={100}
+            bank={selectedBank}
             className="pl-7"
           />
         </section>
         <section className="col-span-2">
-          <ClockPanel
-            time={clockDetails.time}
-            sync={clockDetails.sync}
-            className="pl-7"
-          />
+          <Panel>
+            <Header>Transaction Categories</Header>
+            <PieChartGraph
+              transactions={[
+                {
+                  category: "Food",
+                  percentage: 30,
+                },
+                {
+                  category: "Transport",
+                  percentage: 20,
+                },
+                {
+                  category: "Entertainment",
+                  percentage: 30,
+                },
+                {
+                  category: "Shopping",
+                  percentage: 20,
+                },
+                {
+                  category: "Others",
+                  percentage: 20,
+                },
+              ]}
+              colors={["#FFB800", "#FF4D00", "#00B4FF", "#00FF6F", "#FF00E5"]}
+            />
+          </Panel>
         </section>
       </section>
       <div className="pt-6">

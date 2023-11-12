@@ -23,10 +23,11 @@ export type UserPanelProps = {
   userDetails: UserProps;
 };
 
-export type ClockPanelProps = {
+export type GoalPanelProps = {
+  bank?: string;
   className?: string;
-  sync: boolean;
-  time: string;
+  percentage: number;
+  connected: boolean;
 };
 
 export type JobProps = {

@@ -3,22 +3,19 @@ import { FormikHelpers } from "formik";
 import { FormikProps } from "formik/dist/types";
 import { z } from "zod";
 
-export type AssetAllocationsProps = {
-  assetAllocations: Asset[];
-  assetColors: string[];
+export type PieChartProps = {
+  transactions: Spending[];
+  colors: string[];
 };
 
-export type Asset = {
-  assetClassName: string;
-  actualAssetClassPerc: number;
+export type Spending = {
+  category: string;
+  percentage: number;
 };
 
 export type TooltipProps = {
   payload?: {
-    payload: {
-      assetClassName: string;
-      actualAssetClassPerc: number;
-    };
+    payload: Spending;
   }[];
 };
 

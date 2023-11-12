@@ -8,24 +8,12 @@ export const Nav = () => {
       path: "/home",
     },
     {
-      name: "Profile",
+      name: "Goals",
+      path: "/goals",
+    },
+    {
+      name: "John Doe",
       path: "/profile",
-    },
-    {
-      name: "Forms",
-      path: "/form",
-    },
-    {
-      name: "My IP",
-      path: "/my-ip",
-    },
-    {
-      name: "Events",
-      path: "/events",
-    },
-    {
-      name: "Attendees",
-      path: "/attendees",
     },
     {
       name: "Logout",
@@ -39,6 +27,7 @@ export const Nav = () => {
         <section className="flex justify-between gap-6">
           {navLinks.map((link) => (
             <NavLink
+              key={link.name}
               to={link.path}
               className={`${link.name
                 .replace(" ", "")
