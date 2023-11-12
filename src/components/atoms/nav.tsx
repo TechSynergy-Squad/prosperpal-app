@@ -12,7 +12,7 @@ export const Nav = () => {
       path: "/goals",
     },
     {
-      name: "John Doe",
+      name: "Gugu Mokwena",
       path: "/profile",
     },
     {

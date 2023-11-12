@@ -5,7 +5,7 @@ import { BanksDropDown, Graph, Header, PieChartGraph } from "../atoms";
 import { Switch } from "@headlessui/react";
 import { Transaction, useGetTransactionsQuery } from "../../queries";
 import toast from "react-hot-toast";
-import { groupBy } from "lodash";
+import { groupBy, isEmpty } from "lodash";
 
 export const ReportPage = () => {
   const { data } = useGetTransactionsQuery();
@@ -19,7 +19,7 @@ export const ReportPage = () => {
 
   const transactionCategories = useMemo<
     { category: string; percentage: number }[]
-  >(() => {
+  >((): { category: string; percentage: number }[] => {
     if (!data) return [];
     const categories = [
       ...new Set(
@@ -52,6 +52,33 @@ export const ReportPage = () => {
 
     return modelledTransactions;
   }, [data]);
+
+  const cats = [
+    {
+      category: "Food",
+      percentage: 40,
+    },
+    {
+      category: "Clothing",
+      percentage: 13,
+    },
+    {
+      category: "Transport",
+      percentage: 20,
+    },
+    {
+      category: "Entertainment",
+      percentage: 5,
+    },
+    {
+      category: "Others",
+      percentage: 12,
+    },
+    {
+      category: "Salary",
+      percentage: 100,
+    },
+  ];
 
   const [selectedBank, setSelectedBank] = useState("");
   const [switchOffed, setSwitchOffed] = useState(false);
@@ -156,7 +183,7 @@ export const ReportPage = () => {
                 }
               />
             </section>
-            <section className="">
+            <section className="min-h-[74px]">
               <GoalPanel
                 connected={isConnected}
                 percentage={100}
@@ -168,13 +195,15 @@ export const ReportPage = () => {
               <Panel>
                 <Header>Transaction Categories</Header>
                 <PieChartGraph
-                  transactions={isConnected ? transactionCategories : []}
+                  transactions={isConnected ? cats : []}
                   colors={[
                     "#FFB800",
                     "#FF4D00",
                     "#00B4FF",
                     "#00FF6F",
                     "#FF00E5",
+                    "#3fefe6",
+
                   ]}
                 />
               </Panel>
@@ -186,7 +215,6 @@ export const ReportPage = () => {
         </>
       ) : (
         <p className="text-sm font-semibold">
-          {" "}
           Currently have no data to display, try connecting a bank....
         </p>
       )}

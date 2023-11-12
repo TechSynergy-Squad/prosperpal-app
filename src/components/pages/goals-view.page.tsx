@@ -1,61 +1,89 @@
-import React, { useState, useContext, Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react'
-import { ListGraph, Button } from '../atoms/index';
-import { ListGraphInputProps } from '../atoms/types';
-import { GoalForm } from '../organisms/index';
-import { useAppContext } from '../../AppContextStore';
+import React, { useState, useContext, Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ListGraph, Button } from "../atoms/index";
+import { ListGraphInputProps } from "../atoms/types";
+import { GoalForm } from "../organisms/index";
+import { useAppContext } from "../../AppContextStore";
 import { Field, Formik } from "formik";
 import toast from "react-hot-toast";
 
 export function GoalsListGraph(): JSX.Element {
-  let [isOpen, setIsOpen] = useState<boolean>(false)
+  let [isOpen, setIsOpen] = useState<boolean>(false);
   //context
   //let { goals, setGoals } = useAppContext();
-  let [listGraphInput, setListGraphInput] = useState<ListGraphInputProps[]>([{ title: 'Buy a car', description: 'Audi A3 Sedan 2021', cost:"R687,444",startDate: '2023-11-01', endDate: '2024-06-01', model: 'Audi', yearOfManufacture: '2023', maintenance: 'R6000', insurance: 'R2000', repairs: 'R3000' }]);
+  let [listGraphInput, setListGraphInput] = useState<ListGraphInputProps[]>([
+    {
+      title: "Buy a car",
+      description: "Audi A3 Sedan 2021",
+      cost: "R687,444",
+      startDate: "2023-11-01",
+      endDate: "2024-06-01",
+      model: "Audi",
+      yearOfManufacture: "2023",
+      maintenance: "R6000",
+      insurance: "R2000",
+      repairs: "R3000",
+    },
+  ]);
   const initialValues = {
     category: "",
     model: "",
     yearOfManufacture: "",
-    description: ""
+    description: "",
   };
 
-  const [category, setCategory] = useState<string>()
-  const [model, setModel] = useState<string>()
-  const [yearOfManufacture, setYearOfManufacture] = useState<string>()
-  const [title, setTitle] = useState<string>()
-  const [description, setDescription] = useState<string>()
+  const [category, setCategory] = useState<string>();
+  const [model, setModel] = useState<string>();
+  const [yearOfManufacture, setYearOfManufacture] = useState<string>();
+  const [title, setTitle] = useState<string>();
+  const [description, setDescription] = useState<string>();
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
   }
   const submit = async () => {
     console.log("what happening");
-    
-       var promtString =model + " " + description + " from " + yearOfManufacture;
-       setListGraphInput([...listGraphInput, { title: 'Buy a car', description: 'BMW 2 Series Gran Coupe 2022',cost:"R623,400", startDate: '2023-11-12', endDate: '2024-11-11', model: 'BMW', yearOfManufacture: '2021', maintenance: 'R5500', insurance: 'R3310', repairs: 'R5000' }])
-       console.log("test submit prompt",promtString)
-       // userService.signInWithEmail({ email }).then((res) => {
-       //   if (Boolean(res)) {
-       //     toast.error("Email not found", {
-       //       duration: 4000,
-       //     });
-       //   } else {
-       //     toast.success("Email sent, please check your inbox", {
-       //       duration: 4000,
-       //     });
-       //   }
-       // });
-     };
+
+    var promtString = model + " " + description + " from " + yearOfManufacture;
+    setListGraphInput([
+      ...listGraphInput,
+      {
+        title: "Buy a car",
+        description: "BMW 2 Series Gran Coupe 2022",
+        cost: "R623,400",
+        startDate: "2023-11-12",
+        endDate: "2024-11-11",
+        model: "BMW",
+        yearOfManufacture: "2021",
+        maintenance: "R5000",
+        insurance: "R3000",
+        repairs: "R5000",
+      },
+    ]);
+    console.log("test submit prompt", promtString);
+    // userService.signInWithEmail({ email }).then((res) => {
+    //   if (Boolean(res)) {
+    //     toast.error("Email not found", {
+    //       duration: 4000,
+    //     });
+    //   } else {
+    //     toast.success("Email sent, please check your inbox", {
+    //       duration: 4000,
+    //     });
+    //   }
+    // });
+  };
 
   const addNewGoal = () => {
-    setIsOpen(true)
-    
-  }
+    setIsOpen(true);
+  };
 
   return (
     <>
-      <div className='flex justify-end'>
-        <Button onClick={addNewGoal} className="ml-auto">Add New Goal</Button>
+      <div className="flex justify-end">
+        <Button onClick={addNewGoal} className="ml-auto">
+          Add New Goal
+        </Button>
       </div>
       <ListGraph inputs={listGraphInput} />
 
@@ -96,7 +124,6 @@ export function GoalsListGraph(): JSX.Element {
                     enableReinitialize
                     initialValues={initialValues}
                     onSubmit={submit}
-
                   >
                     {({ values, handleBlur }) => (
                       <form className="text-black flex flex-col items-center justify-center gap-8">
@@ -104,7 +131,7 @@ export function GoalsListGraph(): JSX.Element {
                           name="categories"
                           value={category}
                           onChange={(value) => setCategory(value.target.value)}
-                          onBlur={handleBlur('category')}
+                          onBlur={handleBlur("category")}
                           style={{ display: "block" }}
                           className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
                         >
@@ -124,7 +151,7 @@ export function GoalsListGraph(): JSX.Element {
                               name="model"
                               value={model}
                               onChange={(value) => setModel(value.target.value)}
-                              onBlur={handleBlur('model')}
+                              onBlur={handleBlur("model")}
                               style={{ display: "block" }}
                               className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
                             >
@@ -145,7 +172,9 @@ export function GoalsListGraph(): JSX.Element {
                             <select
                               name="yearOfManufacture"
                               value={yearOfManufacture}
-                              onChange={(value) => setYearOfManufacture(value.target.value)}
+                              onChange={(value) =>
+                                setYearOfManufacture(value.target.value)
+                              }
                               // onBlur={handleBlur}
                               style={{ display: "block" }}
                               className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
@@ -163,60 +192,88 @@ export function GoalsListGraph(): JSX.Element {
                                 2020
                               </option>
                             </select>
-                            {model === "audi" && yearOfManufacture === "2022" && (
-                              //car bmw 2022
-                              <>
-                                <select
-                                  name="description"
-                                  value={description}
-                                  onChange={(value) => setDescription(value.target.value)}
-                                  // onBlur={handleBlur}
-                                  style={{ display: "block" }}
-                                  className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
-                                >
-                                  <option value="" label="Select car description">
-                                    Select year{" "}
-                                  </option>
-                                  <option value="Audi A3 Sedan" label="Audi A3 Sedan">
-                                    Audi A3 Sedan
-                                  </option>
-                                  <option value="BMW 3 Series" label="BMW 3 Series">
-                                    Audi S3 Sedan
-                                  </option>
-                                  <option value="Audi A4 Sedan" label="Audi A4 Sedan">
-                                    Audi A4 Sedan
-                                  </option>
-                                </select>
-                              </>
-
-                            )}
-                            {model === "bmw" && yearOfManufacture === "2022" && (
-                              //car bmw 2022
-                              <>
-                                <select
-                                  name="description"
-                                  value={description}
-                                  onChange={(value) => setDescription(value.target.value)}
-                                  // onBlur={handleBlur}
-                                  style={{ display: "block" }}
-                                  className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
-                                >
-                                  <option value="" label="Select car description">
-                                    Select year{" "}
-                                  </option>
-                                  <option value="BMW 2 Series Gran Coupe" label="BMW 2 Series Gran Coupe">
-                                    BMW 2 Series Gran Coupe
-                                  </option>
-                                  <option value="BMW 3 Series" label="BMW 3 Series">
-                                    BMW 3 Series
-                                  </option>
-                                  <option value="BMW 4 Series Gran Coupe" label="BMW 4 Series Gran Coupe">
-                                    BMW 4 Series Gran Coupe
-                                  </option>
-                                </select>
-                              </>
-
-                            )}
+                            {model === "audi" &&
+                              yearOfManufacture === "2022" && (
+                                //car bmw 2022
+                                <>
+                                  <select
+                                    name="description"
+                                    value={description}
+                                    onChange={(value) =>
+                                      setDescription(value.target.value)
+                                    }
+                                    // onBlur={handleBlur}
+                                    style={{ display: "block" }}
+                                    className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
+                                  >
+                                    <option
+                                      value=""
+                                      label="Select car description"
+                                    >
+                                      Select year{" "}
+                                    </option>
+                                    <option
+                                      value="Audi A3 Sedan"
+                                      label="Audi A3 Sedan"
+                                    >
+                                      Audi A3 Sedan
+                                    </option>
+                                    <option
+                                      value="BMW 3 Series"
+                                      label="BMW 3 Series"
+                                    >
+                                      Audi S3 Sedan
+                                    </option>
+                                    <option
+                                      value="Audi A4 Sedan"
+                                      label="Audi A4 Sedan"
+                                    >
+                                      Audi A4 Sedan
+                                    </option>
+                                  </select>
+                                </>
+                              )}
+                            {model === "bmw" &&
+                              yearOfManufacture === "2022" && (
+                                //car bmw 2022
+                                <>
+                                  <select
+                                    name="description"
+                                    value={description}
+                                    onChange={(value) =>
+                                      setDescription(value.target.value)
+                                    }
+                                    // onBlur={handleBlur}
+                                    style={{ display: "block" }}
+                                    className="bg-[#E9E4E4] px-5 py-2 rounded-xl w-96"
+                                  >
+                                    <option
+                                      value=""
+                                      label="Select car description"
+                                    >
+                                      Select year{" "}
+                                    </option>
+                                    <option
+                                      value="BMW 2 Series Gran Coupe"
+                                      label="BMW 2 Series Gran Coupe"
+                                    >
+                                      BMW 2 Series Gran Coupe
+                                    </option>
+                                    <option
+                                      value="BMW 3 Series"
+                                      label="BMW 3 Series"
+                                    >
+                                      BMW 3 Series
+                                    </option>
+                                    <option
+                                      value="BMW 4 Series Gran Coupe"
+                                      label="BMW 4 Series Gran Coupe"
+                                    >
+                                      BMW 4 Series Gran Coupe
+                                    </option>
+                                  </select>
+                                </>
+                              )}
                           </>
                         )}
 
@@ -224,7 +281,7 @@ export function GoalsListGraph(): JSX.Element {
                           className="loginBtn w-80 text-3xl"
                           onClick={(e) => {
                             //e.preventDefault();
-                            toast.loading("Goal added...");
+                            toast.success("Goal added...");
                             submit();
                           }}
                           shape="rounded"
