@@ -1,7 +1,6 @@
 import axios from "axios";
 
-export const baseURL =
-  "https://api.dictionaryapi.dev/api/v2/entries/en/precious";
+export const baseURL = "https://localhost:5001/api";
 
 export const openAPI = axios.create({
   baseURL: baseURL,

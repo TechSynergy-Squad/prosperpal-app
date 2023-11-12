@@ -3,12 +3,55 @@ import { GoalPanel, SavingPanel } from "../molecules";
 import { Panel } from "..";
 import { BanksDropDown, Graph, Header, PieChartGraph } from "../atoms";
 import { Switch } from "@headlessui/react";
-import { useGetTransactionsQuery } from "../../queries";
+import { Transaction, useGetTransactionsQuery } from "../../queries";
 import toast from "react-hot-toast";
+import { groupBy } from "lodash";
 
 export const ReportPage = () => {
   const { data } = useGetTransactionsQuery();
-  console.log("Get Transactions", data);
+
+  const totalAmount = useMemo(() => {
+    if (!data) return 0;
+    return data.reduce((acc: number, transaction: Transaction) => {
+      return acc + transaction.creditAmount - transaction.debitAmount;
+    }, 0);
+  }, [data]);
+
+  const transactionCategories = useMemo<
+    { category: string; percentage: number }[]
+  >(() => {
+    if (!data) return [];
+    const categories = [
+      ...new Set(
+        data.map((transaction: Transaction) => {
+          return {
+            category: transaction.category,
+            percentage:
+              ((totalAmount - transaction?.creditAmount) / totalAmount) * 100,
+          };
+        })
+      ),
+    ];
+
+    const uniqueTransactions = groupBy(categories, "category");
+
+    const modelledTransactions = Object.keys(uniqueTransactions).map(
+      (category) => {
+        const percentage = uniqueTransactions[category].reduce(
+          (acc: number, curr: any) => {
+            return acc + curr.percentage;
+          },
+          0
+        );
+        return {
+          category,
+          percentage,
+        };
+      }
+    );
+
+    return modelledTransactions;
+  }, [data]);
 
   const [selectedBank, setSelectedBank] = useState("");
   const [switchOffed, setSwitchOffed] = useState(false);
@@ -123,32 +166,7 @@ export const ReportPage = () => {
           <Panel>
             <Header>Transaction Categories</Header>
             <PieChartGraph
-              transactions={
-                isConnected
-                  ? [
-                      {
-                        category: "Food",
-                        percentage: 30,
-                      },
-                      {
-                        category: "Transport",
-                        percentage: 20,
-                      },
-                      {
-                        category: "Entertainment",
-                        percentage: 30,
-                      },
-                      {
-                        category: "Shopping",
-                        percentage: 20,
-                      },
-                      {
-                        category: "Others",
-                        percentage: 20,
-                      },
-                    ]
-                  : []
-              }
+              transactions={isConnected ? transactionCategories : []}
               colors={["#FFB800", "#FF4D00", "#00B4FF", "#00FF6F", "#FF00E5"]}
             />
           </Panel>
