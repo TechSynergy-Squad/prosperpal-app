@@ -16,7 +16,7 @@ export const GoalPanel = ({
         <Header>Goal Meter</Header>
 
         <p className="text-3xl text-center flex justify-center py-3">
-          {percentage === 0 ? (
+          {percentage === 0 || !connected ? (
             <TbCloudQuestion className="text-red-500 w-12" />
           ) : percentage < 50 ? (
             <PiSmileySadThin className="text-yellow-300" />
