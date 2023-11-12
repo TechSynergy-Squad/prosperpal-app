@@ -4,7 +4,7 @@ import { ProfileService } from "../../services/sub-services/profile-service";
 import { UserProps } from "../molecules/types";
 import { GoalPanel } from "../molecules";
 import { Panel } from "..";
-import { BanksDropDown, Graph } from "../atoms";
+import { BanksDropDown, Graph, PieChartGraph } from "../atoms";
 import { Switch } from "@headlessui/react";
 import { useGetTransactionsQuery } from "../../queries";
 
@@ -91,11 +91,30 @@ export const ReportPage = () => {
           />
         </section>
         <section className="col-span-2">
-          <GoalPanel
-            connected={false}
-            percentage={50}
-            bank={"African Bank"}
-            className="pl-7"
+          <PieChartGraph
+            transactions={[
+              {
+                category: "Food",
+                percentage: 30,
+              },
+              {
+                category: "Transport",
+                percentage: 20,
+              },
+              {
+                category: "Entertainment",
+                percentage: 30,
+              },
+              {
+                category: "Shopping",
+                percentage: 20,
+              },
+              {
+                category: "Others",
+                percentage: 20,
+              },
+            ]}
+            colors={["#FFB800", "#FF4D00", "#00B4FF", "#00FF6F", "#FF00E5"]}
           />
         </section>
       </section>

@@ -8,24 +8,12 @@ export const Nav = () => {
       path: "/home",
     },
     {
-      name: "Profile",
-      path: "/profile",
-    },
-    {
-      name: "Forms",
-      path: "/form",
-    },
-    {
       name: "Goals",
       path: "/goals",
     },
     {
-      name: "Events",
-      path: "/events",
-    },
-    {
-      name: "Attendees",
-      path: "/attendees",
+      name: "John Doe",
+      path: "/profile",
     },
     {
       name: "Logout",
