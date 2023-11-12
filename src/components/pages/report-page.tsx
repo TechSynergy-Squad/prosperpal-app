@@ -123,58 +123,73 @@ export const ReportPage = () => {
           </Switch>
         </section>
       </section>
-      <section className="report-page grid grid-cols-5 gap-6  ">
-        <section className="col-span-2">
-          <SavingPanel
-            jobs={
-              isConnected
-                ? [
-                    {
-                      name: "August 2023",
-                      amount: 1273.95,
-                      goal: 5000,
-                    },
-                    {
-                      name: "September 2023",
-                      amount: 3466.35,
-                      goal: 5000,
-                    },
-                    {
-                      name: "October 2023",
-                      amount: 1499.45,
-                      goal: 5000,
-                    },
-                    {
-                      name: "November 2023",
-                      amount: 5000,
-                      goal: 5000,
-                    },
-                  ]
-                : []
-            }
-          />
-        </section>
-        <section className="">
-          <GoalPanel
-            connected={isConnected}
-            percentage={100}
-            bank={selectedBank}
-            className="pl-7"
-          />
-        </section>
-        <section className="col-span-2">
-          <Panel>
-            <Header>Transaction Categories</Header>
-            <PieChartGraph
-              transactions={isConnected ? transactionCategories : []}
-              colors={["#FFB800", "#FF4D00", "#00B4FF", "#00FF6F", "#FF00E5"]}
-            />
-          </Panel>
-        </section>
-      </section>
-      <div className="pt-6">
-        <Panel>{isConnected && <Graph />}</Panel>
-      </div>
+      {isConnected ? (
+        <>
+          <section className="report-page grid grid-cols-5 gap-6  ">
+            <section className="col-span-2">
+              <SavingPanel
+                jobs={
+                  isConnected
+                    ? [
+                        {
+                          name: "August 2023",
+                          amount: 1273.95,
+                          goal: 5000,
+                        },
+                        {
+                          name: "September 2023",
+                          amount: 3466.35,
+                          goal: 5000,
+                        },
+                        {
+                          name: "October 2023",
+                          amount: 1499.45,
+                          goal: 5000,
+                        },
+                        {
+                          name: "November 2023",
+                          amount: 5000,
+                          goal: 5000,
+                        },
+                      ]
+                    : []
+                }
+              />
+            </section>
+            <section className="">
+              <GoalPanel
+                connected={isConnected}
+                percentage={100}
+                bank={selectedBank}
+                className="pl-7"
+              />
+            </section>
+            <section className="col-span-2">
+              <Panel>
+                <Header>Transaction Categories</Header>
+                <PieChartGraph
+                  transactions={isConnected ? transactionCategories : []}
+                  colors={[
+                    "#FFB800",
+                    "#FF4D00",
+                    "#00B4FF",
+                    "#00FF6F",
+                    "#FF00E5",
+                  ]}
+                />
+              </Panel>
+            </section>
+          </section>
+          <div className="pt-6">
+            <Panel>{isConnected && <Graph />}</Panel>
+          </div>
+        </>
+      ) : (
+        <p className="text-sm font-semibold">
+          {" "}
+          Currently have no data to display, try connecting a bank....
+        </p>
+      )}
     </>
   );
 };
