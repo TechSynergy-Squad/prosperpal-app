@@ -183,7 +183,7 @@ export const ReportPage = () => {
                 }
               />
             </section>
-            <section className="min-h-[74px]">
+            <section className=" grid w-full place-items-stretch">
               <GoalPanel
                 connected={isConnected}
                 percentage={100}
@@ -191,7 +191,7 @@ export const ReportPage = () => {
                 className="pl-7"
               />
             </section>
-            <section className="col-span-2">
+            <section className="grid col-span-2 place-items-stretch">
               <Panel>
                 <Header>Transaction Categories</Header>
                 <PieChartGraph
@@ -203,7 +203,6 @@ export const ReportPage = () => {
                     "#00FF6F",
                     "#FF00E5",
                     "#3fefe6",
-
                   ]}
                 />
               </Panel>

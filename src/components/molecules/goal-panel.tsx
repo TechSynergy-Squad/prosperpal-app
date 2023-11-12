@@ -17,13 +17,13 @@ export const GoalPanel = ({
 
         <p className="text-3xl text-center flex justify-center py-3">
           {percentage === 0 || !connected ? (
-            <TbCloudQuestion className="text-red-500 w-12" />
+            <TbCloudQuestion className="text-red-500 w-12" size={86} />
           ) : percentage < 50 ? (
-            <PiSmileySadThin className="text-yellow-300" />
+            <PiSmileySadThin className="text-yellow-300" size={86} />
           ) : percentage < 100 ? (
-            <BsEmojiSmile className="text-orange-400" />
+            <BsEmojiSmile className="text-orange-400" size={86} />
           ) : (
-            <BsEmojiLaughing className={"text-green-400"} />
+            <BsEmojiLaughing className={"text-green-400"} size={86} />
           )}
         </p>
         <section
