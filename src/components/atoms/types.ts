@@ -48,6 +48,7 @@ export type ListGraphInputProps = {
   startDate : string;
   endDate: string;
   title: string;
+  cost: string;
   description: string;
   model: string;
   yearOfManufacture: string;
