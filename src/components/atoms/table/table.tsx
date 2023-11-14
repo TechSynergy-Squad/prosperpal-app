@@ -71,12 +71,12 @@ export const Table = <T extends Record<string, unknown>>({
             ))}
           </thead>
           <tbody
-            className={`${isChild ? "text-[#AEAEAE]" : " text-tableBody"}`}
+            className={`${isChild ? "text-[#AEAEAE]" : " text-primary"}`}
           >
             {instance.getRowModel().rows.map((row) => (
               <tr
                 key={row.id}
-                className={`${isChild ? "divide-y" : "even:bg-table"}`}
+                className={`${isChild ? "divide-y" : "even:bg-slate-300"}`}
               >
                 {row.getVisibleCells().map((cell) => (
                   <td
@@ -129,7 +129,7 @@ export const Table = <T extends Record<string, unknown>>({
                   className={`h-8 w-8 rounded ${
                     index === instance.getState().pagination.pageIndex
                       ? "bg-primary text-white"
-                      : "bg-tertiary text-primary"
+                      : "bg-secondary text-primary"
                   }`}
                   onClick={() => instance.setPageIndex(index)}
                   disabled={isLoading}

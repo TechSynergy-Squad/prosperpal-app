@@ -73,7 +73,7 @@ export const ListGraph: React.FC<Props> = ({ inputs }) => {
         cell: ({ row }) => {
           return (
             <Button
-              className="text-blue-400"
+              shape="none"
               onClick={() => onViewGoal(row?.original?.userId ?? "")}
             >
               View
@@ -167,6 +167,30 @@ export const ListGraph: React.FC<Props> = ({ inputs }) => {
                 insurance: "insurance",
                 repairs: "repairs",
                 status: "status",
+              },
+              {
+                title: "Buy a car",
+                description: "Audi A3 Sedan 2021",
+                cost: "R687,444",
+                startDate: "2023-11-01",
+                endDate: "2024-06-01",
+                model: "Audi",
+                yearOfManufacture: "2023",
+                maintenance: "R6000",
+                insurance: "R2000",
+                repairs: "R3000",
+              },
+              {
+                title: "Buy a car",
+                description: "Suzuki Dzire",
+                cost: "R687,444",
+                startDate: "2023-11-01",
+                endDate: "2024-06-01",
+                model: "Audi",
+                yearOfManufacture: "2023",
+                maintenance: "R6000",
+                insurance: "R2000",
+                repairs: "R3000",
               },
             ]
           }

@@ -17,7 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
       shapeClasses = "rounded-none";
       break;
     case "none":
-      shapeClasses = "";
+      shapeClasses = "text-blue-400 underline";
       break;
     case "outline-rounded":
       shapeClasses = "rounded-full border border-blue-500";
