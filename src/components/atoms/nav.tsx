@@ -29,12 +29,12 @@ export const Nav = () => {
     <FiLogOut size={24} />,
   ];
   return (
-    <nav className="w-full sticky bg-transparent drop-shadow-2xl max-w-xs">
+    <nav className="w-full sticky bg-transparent drop-shadow-2xl max-w-[180px]">
       <ul className="flex flex-col p-3">
-        <img src={Logo} alt="logo" className="w-18 self-center" />
+        <img src={Logo} alt="logo" className="w-[150px] self-center" />
         <section className="flex flex-col justify-between gap-6 ">
           {navLinks.map((link, index) => (
-            <section className="flex items-center gap-2 text-primary hover:text-blue-300">
+            <section className="flex  justify-center items-center gap-2 text-primary hover:text-blue-300">
               {icons[index]}
               <NavLink
                 key={link.name}
